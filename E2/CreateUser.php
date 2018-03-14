@@ -1,6 +1,6 @@
 <?php
 $mysqli = new mysqli("mysql.eecs.ku.edu", "s682f720", "aX7caeyi", "s682f720");
-
+$username = $_POST["username"];
 /* check connection */
 if ($mysqli->connect_errno) {
     printf("Connect failed: %s\n", $mysqli->connect_error);
