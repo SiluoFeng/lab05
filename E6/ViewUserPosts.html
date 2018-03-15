@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head><title>Lab 05 Exercise 6</title></head>
+
+<body>
+
+
+  <form action="ViewUserPosts.php" method = "post">
+    <select name= "select">
+    <?php
+      $mysqli = new mysqli("mysql.eecs.ku.edu","s682f720","aX7caeyi","s682f720");
+      if($mysqli->connect_errno)
+      {
+        printf("Connection Failed! %s\n",$mysqli->connect_error);
+        exit();
+      }
+      $username = null;
+      $query = "SELECT user_id FROM Users";
+      if($result=$mysqli->query($query))
+      {
+        while($row=$result->fetch_assoc())
+        {
+          $username = $row["user_id"];
+          echo "<option value='$username'>".$username."</option>";
+        }
+        $result->free();
+      }
+    ?>
+    </select>
+    <input type = "submit" name = "submit" value="Submit">
+  </form>
+
+</body>
+</html>
